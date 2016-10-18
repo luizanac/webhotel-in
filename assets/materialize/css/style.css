@@ -1,0 +1,40 @@
+.tarde{
+	background-image:url('../../img/tarde.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+	min-height: 620px;
+}
+.manha{
+	background-image:url('../../img/manha.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+	min-height: 620px;
+}
+.noite{
+	background-image:url('../../img/noite.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+	min-height: 620px;
+}
+
+.marginleft{
+	margin-left: 15px;
+}
+
+.marginright{
+	margin-right: 15px;
+}
+
+.fontsize{
+	font-size: 13px;
+}
+
+
+
+.colorBlue{
+	background-color: rgb(0, 50, 129);
+}
+
+.buttonOkay{
+	color: rgb(107, 203, 236);
+}
