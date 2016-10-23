@@ -26,3 +26,6 @@ $route['deletar-caracteristica'] = 'FeaturesController/deleteFeature';
 //ROUTES DE LOGIN
 $route['login'] = 'LoginController/login';
 $route['sair'] = 'LoginController/logOut';
+
+//teste
+$route['teste'] = 'AvailableRoomsController';

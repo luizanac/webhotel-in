@@ -33,6 +33,8 @@ class RoomsController extends MY_Controller {
 			);
 
 			$id = $this->RoomModel->insertRoom($room);
+			$images = [];
+
 			if($id != FALSE){
 				if(!empty($_FILES['userfiles']['name'])){
 
@@ -55,15 +57,17 @@ class RoomsController extends MY_Controller {
 
 						if($this->upload->do_upload('userfile')){
 							$fileData = $this->upload->data();
-							$images['route_image'] = $fileData['file_name'];
-							$images['id_room'] = $id->id_room;
-							$this->RoomModel->insertImage($images);
+							$images[$i]['route_image'] = $fileData['file_name'];
+							$images[$i]['id_room'] = $id->id_room;
 						}
 					}
 				}
 
-				echo "Enviado com sucesso!";
-
+				if($this->RoomModel->insertImage($images)){
+					echo "Enviado com sucesso!";
+				}else{
+					echo "Falha ao enviar imagens!";
+				}
 			}else{
 				echo "Falha ao enviar!";
 			}

@@ -8,6 +8,15 @@
 						<input type="text" id="nameKind" name="nameKind" autocomplete="off" required>
 						<label for="nameKind">Nome do tipo</label>
 					</div>
+					<div class="input-field col s12">
+						<select name="tariffs[]" multiple>
+							<option required disabled selected>Selecione as tarifas</option>
+							<?php foreach($tariffs as $tariff) : ?>
+								<option value="<?= $tariff['id_tariff']; ?>"><?= $tariff['name_tariff']; ?> - <?= $tariff['start_date'];?>~<?= $tariff['final_date']; ?></option>
+							<?php endforeach ?>
+						</select>
+						<label>Tarifas</label>
+					</div>
 					<!-- Modal de seleção de caracteristicas -->
 					<div id="modal_features" class="modal modal-fixed-footer">
 						<div class="modal-content">

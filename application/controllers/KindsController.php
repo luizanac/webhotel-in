@@ -9,7 +9,7 @@ class KindsController extends MY_Controller {
 	}
 
 	public function index(){
-		$data['kinds'] = $this->KindRoomModel->getKinds();
+		$data['kinds'] = $this->KindRoomModel->getKinds($this->session->userdata('id_user'));
 		$data['user'] = $this->session->userdata();
 		$this->template->load('template/template','kindRooms/kindRoomsView.php',$data);
 	}
@@ -19,14 +19,14 @@ class KindsController extends MY_Controller {
 
 		if($this->form_validation->run()){
 
+			var_dump($this->input->post('tariffs[]'));
 			$filesCount = count($_FILES['userfiles']['name']);
-			var_dump($filesCount);
-
+			$images = [];
 			if($id_room_kind = $this->KindRoomModel->insertKind(
 				array(
 					'id_user' => $this->session->userdata('id_user'),
 					'name_room_kind' => $this->input->post('nameKind')
-					),$this->input->post('features[]')
+					),$this->input->post('features[]'),$this->input->post('tariffs[]')
 				)){
 				if(!empty($filesCount)){
 					for($i = 0; $i < $filesCount; $i++){		
@@ -45,19 +45,23 @@ class KindsController extends MY_Controller {
 
 						if($this->upload->do_upload('userfile')){
 							$fileData = $this->upload->data();
-							$images['kind_image_route'] = $fileData['file_name'];
-							$images['id_room_kind'] = $id_room_kind->id_room_kind;
-							$this->KindRoomModel->insertImage($images);
+							$images[$i]['kind_image_route'] = $fileData['file_name'];
+							$images[$i]['id_room_kind'] = $id_room_kind->id_room_kind;
 						}
 					}
 				}
-
-				echo "Formulário enviado!";
+				
+				if($this->KindRoomModel->insertImage($images)){
+					echo "Formulário enviado!";
+				}else{
+					echo "Falha ao enviar imagens!";
+				}				
 			}else{
 				echo "Falha ao enviar formulário!";
 			}
 		}else{
 			$data['features'] = $this->FeatureRoomModel->getFeatures($this->session->userdata('id_user'));
+			$data['tariffs'] = $this->TariffModel->getTariffs($this->session->userdata('id_user'));
 			$data['user'] = $this->session->userdata();
 			$this->template->load('template/template','kindRooms/newKindRoomsView',$data);
 		}

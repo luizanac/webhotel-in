@@ -68,8 +68,6 @@ $(document).ready(function(){
 		return false;
 	});
 
-	novo-quarto
-
 	$("#room_form").submit(function(){
 		var formData = new FormData($(this)[0]);
 		loading();
@@ -108,6 +106,9 @@ $(document).ready(function(){
 			success: function (data) {
 				closeLoading();
 				Materialize.toast(data,2000);	
+			},
+			error: function (data) {
+				closeLoading();
 			}
 		});
 		return false;
