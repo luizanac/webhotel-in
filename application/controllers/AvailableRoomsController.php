@@ -1,11 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class AvailableRoomsController extends CI_Controller {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('AvailableRoomsModel');
-	}
 
 	public function index(){
 		$data['rooms'] = $this->getAvailableRomms();
