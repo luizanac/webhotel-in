@@ -25,6 +25,10 @@
 						success: function(data){
 							$("#teste").slideToggle('slow');
 							$("#teste").html(data);
+							$(".rslides").responsiveSlides({
+						        auto: true,
+						        speed: 500
+							});
 						},
 						error: function(data){
 							alert("A");
@@ -36,10 +40,6 @@
 					$("#teste").slideToggle('slow');
 				});
 
-				$(".rslides").responsiveSlides({
-			        auto: true,
-			        speed: 500
-				});
 			});
 		</script>
 		<style type="text/css">

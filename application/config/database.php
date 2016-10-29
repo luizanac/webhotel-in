@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.70.19.252',
-	'username' => 'luizanac',
+	'hostname' => 'localhost',
+	'username' => 'root',
 	'password' => 'luizroot',
 	'database' => 'webco519_booking_system',
 	'dbdriver' => 'mysqli',
