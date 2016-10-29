@@ -20,7 +20,15 @@
 						<input type="number" id="children_price" name="tariff[children_price]" required autocomplete="off">
 						<label id="children_price">Preço por criança</label>
 					</div>
-					<div class="input-field col right">
+					<div class="col s12 m6">
+						<label>Data inicial</label>
+						<input type="date" id="start_date" name="tariff[start_date]">
+					</div>
+					<div class="col s12 m6">	
+						<label>Data final</label>				
+						<input type="date" id="final_date" name="tariff[final_date]">
+					</div>
+					<div class="col right">
 						<button type="submit" class="loading btn blue darken-4">Salvar</button>
 					</div>
 				</form>

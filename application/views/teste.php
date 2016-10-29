@@ -12,6 +12,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -22,7 +23,7 @@
 						type: "POST",
 						data: {id: id},
 						success: function(data){
-							$("#teste").show('slow');
+							$("#teste").slideToggle('slow');
 							$("#teste").html(data);
 						},
 						error: function(data){
@@ -48,6 +49,10 @@
 				-o-background-size: cover; /*Css Opera*/;
 				height: 200px;
 				color: white;
+			}
+			.quarto:hover{
+				opacity: 0.5;
+				color: black;
 			}
 			#teste{
 				background-color: #eaebed;

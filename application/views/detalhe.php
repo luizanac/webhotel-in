@@ -28,7 +28,7 @@
 	<div class="col-sm-6">
 		<?php
 		foreach ($c as $key => $d): ?>
-			<img src="<?= base_url('assets/img/uploads/').$d['kind_image_route']; ?>"/>
+			<img class="img-responsive" src="<?= base_url('assets/img/uploads/').$d['kind_image_route']; ?>"/>
 		<?php
 		endforeach;
 		?>

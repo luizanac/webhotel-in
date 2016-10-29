@@ -15,6 +15,8 @@
 							<th>Preço Base</th>
 							<th>Preço Adulto</th>
 							<th>Preço Criança</th>
+							<th>Data inicial</th>
+							<th>Data final</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -24,6 +26,8 @@
 							<td><?= $tariff['base_price']; ?></td>
 							<td><?= $tariff['adult_price']; ?></td>
 							<td><?= $tariff['children_price']; ?></td>
+							<td><?= $tariff['start_date']; ?></td>
+							<td><?= $tariff['final_date']; ?></td>
 						</tr>
 					<?php endforeach ?>
 					</tbody>

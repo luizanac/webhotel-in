@@ -13,7 +13,7 @@ class TariffModel extends CI_Model {
 	}
 
 	public function newTariff($tariff){
-		return $this->db->insert($this->table, $tariff) > 0 ? TRUE : FALSE;
+		return $this->db->insert($this->table, $tariff) > 0;
 	}
 
 }

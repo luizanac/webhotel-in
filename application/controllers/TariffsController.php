@@ -20,6 +20,8 @@ class TariffsController extends MY_Controller {
 		$this->form_validation->set_rules('tariff[base_price]', 'fieldlabel', 'trim|required');
 		$this->form_validation->set_rules('tariff[adult_price]', 'fieldlabel', 'trim|required');
 		$this->form_validation->set_rules('tariff[children_price]', 'fieldlabel', 'trim|required');
+		$this->form_validation->set_rules('tariff[start_date]','field','trim|required');
+		$this->form_validation->set_rules('tariff[final_date]','field','trim|required');
 
 		if ($this->form_validation->run()) {
 			$tariff = $this->input->post('tariff');
