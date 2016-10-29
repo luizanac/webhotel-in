@@ -35,6 +35,11 @@
 				$("body").on("click", ".close", function(){
 					$("#teste").slideToggle('slow');
 				});
+
+				$(".rslides").responsiveSlides({
+			        auto: true,
+			        speed: 500
+				});
 			});
 		</script>
 		<style type="text/css">

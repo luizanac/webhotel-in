@@ -26,11 +26,13 @@
 		?>
 	</div>
 	<div class="col-sm-6">
+		<ul class="rslides">
 		<?php
 		foreach ($c as $key => $d): ?>
-			<img class="img-responsive" src="<?= base_url('assets/img/uploads/').$d['kind_image_route']; ?>"/>
+	  		<li><img class="img-responsive" src="<?= base_url('assets/img/uploads/').$d['kind_image_route']; ?>"/></li>
 		<?php
 		endforeach;
 		?>
+		</ul>
 	</div>
 </div>
