@@ -19,14 +19,16 @@ class FeatureRoomModel extends CI_Model {
 		return $features > 0 ? $features : false;
 	}
 
-	public function deleteFeature($id_feature){
-		if($this->db->get($this->room_features,$id_feature) > 0){
+	public function delete($id){
+		$this->db->where('id_feature',$id);
+		$this->db->delete('features');
+		
+		$error = $this->db->error();
+		if ($error['code'] == 1451){
 			return false;
-		}else{
-			if($this->db->delete($this->table, $id_feature) > 0){
-				return true;
-			}
-		}
+		} 
+		return true;
+
 	}
 
 }

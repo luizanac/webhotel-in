@@ -4,83 +4,71 @@
 	<title>
 		
 	</title>
-			<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="<?php echo base_url('assets/js/responsiveslides.min.js'); ?>"></script>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("body").on("click", ".quarto", function(){
-					var id = $(this).attr("id");
-					$.ajax({
-						url: "<?php echo site_url('AvailableRoomsController/teste/') ?>",
-						type: "POST",
-						data: {id: id},
-						success: function(data){
-							$("#teste").slideToggle('slow');
-							$("#teste").html(data);
-						},
-						error: function(data){
-							alert("A");
-							console.log(data);
-						}
-					});
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var base_url = "http://10.0.0.106/PHP/webhotel-in/"
+			$("body").on("submit", "#check_date", function(e){
+				e.preventDefault();
+				$.ajax({
+					url: base_url+"check_date",
+					type: "POST",
+					data: $("#check_date").serialize(),
+					success: function(data){
+						alert(data);
+					},
+					error: function(data){	
+						console.log(data);
+						alert("Ocorreu algum erro de conexão ;(");
+					}
 				});
-				$("body").on("click", ".close", function(){
-					$("#teste").slideToggle('slow');
-				});
-
 			});
-		</script>
-		<style type="text/css">
-			.quarto{
-				cursor: pointer;
-				margin-left: 5px;
-				background-repeat: no-repeat;
-				background-size: cover; /*Css padrão*/
-				-webkit-background-size: cover; /*Css safari e chrome*/
-				-moz-background-size: cover; /*Css firefox*/
-				-ms-background-size: cover; /*Css IE não use mer#^@%#*/
-				-o-background-size: cover; /*Css Opera*/;
-				height: 200px;
-				color: white;
-			}
-			.quarto:hover{
-				opacity: 0.5;
-				color: black;
-			}
-			#teste{
-				background-color: #eaebed;
-				width: 100%;
-				max-height: 350px;
-				height: auto;
-				display: none;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				z-index: 99;	
-			}
-		</style>
+		});
+	</script>
+	<style type="text/css">
+		.center{
+		     float: none;
+		     margin-left: auto;
+		     margin-right: auto;
+		     text-align: center;
+		}
+		.date{
+			margin-top: 30%;
+		}
+		.date input, .date button{
+			height: 50px;
+		}
+	</style>
 </head>
 <body>
 	<section class="container">
-		<article>
-			<div class="col-sm-12 quartos">
-				<?php
-					foreach ($rooms as $key => $room): ?>
-						<div id="<?= $room['id_room']; ?>" class='col-sm-3 quarto' style="background-image: url('<?= base_url('assets/img/uploads/').$room['kind_image_route']; ?>');">
-							<h3>Quarto: <?= $room["number_room"]; ?></h3>
-							<p><?= $room["description_room"]; ?></p>
-						</div>
-				<?php
-				endforeach;
-				?>
+		<article class="row">
+			<div class="col-sm-12 col-centered date">
+				<form id="check_date" class="form-inline center">
+					<div class="form-group">
+						<label>Chegada</label>
+						<br>
+						<input type="date" required="true" class="form-control" name="start_date">
+					</div>
+					<div class="form-group">
+						<label>Saida</label>
+						<br>
+						<input type="date" required="true" class="form-control" name="end_date">
+					</div>
+					<div class="form-group">
+						<br>
+						<button type="submit" class="btn btn-primary" type="submit">Verificar</button>
+					</div>
+				</form>
 			</div>
 		</article>
 	</section>

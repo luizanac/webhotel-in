@@ -18,7 +18,7 @@
 				<?php foreach ($kinds as $kind) : ?>	
 					<tr>
 						<td><?= $kind['name_room_kind']; ?></td>
-						<td class="right" style="margin-right:40px;"><a href="#">Ver mais</a></td>
+						<td class="right" style="margin-right:40px;"><a href="<?= base_url('alterar-tipo');?>/<?= $kind['id_room_kind']; ?>">Ver mais</a></td>
 					</tr>				
 				<?php endforeach ?>
 				</tbody>

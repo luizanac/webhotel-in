@@ -8,7 +8,7 @@ class AvailableRoomsModel extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 	}
-	public function getAvailableRomms(){
+	/*public function getAvailableRomms(){
 		$sql = $this->db->query("SELECT r.id_room,
 							 	r.number_room,
 							 	r.description_room,
@@ -74,6 +74,20 @@ class AvailableRoomsModel extends CI_Model {
 
 		if($sql->num_rows() > 0){
 			return $sql->result_array();
+		}else{
+			return false;
+		}
+	}*/
+
+	public function checkDateRoom($start_date, $end_date){
+		$sql = $this->db->query("SELECT * FROM reservations
+								WHERE ('$start_date' NOT BETWEEN start_date_reservation AND end_date_reservation) 
+								AND ('$end_date' NOT BETWEEN start_date_reservation AND end_date_reservation) 
+								AND (start_date_reservation NOT BETWEEN '$start_date' AND '$end_date') 
+								AND (end_date_reservation NOT BETWEEN '$start_date' AND '$end_date')");
+
+		if($sql->num_rows() > 0){
+			return true;
 		}else{
 			return false;
 		}
