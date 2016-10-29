@@ -1,3 +1,9 @@
+<script type="text/javascript">
+		$(".rslides").responsiveSlides({
+			auto: true,
+			speed: 500
+		});
+</script>
 <style type="text/css">
 	.detalhe{
 		border-top: 1px solid #babbbc;

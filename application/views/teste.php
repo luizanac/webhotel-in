@@ -25,10 +25,6 @@
 						success: function(data){
 							$("#teste").slideToggle('slow');
 							$("#teste").html(data);
-							$(".rslides").responsiveSlides({
-						        auto: true,
-						        speed: 500
-							});
 						},
 						error: function(data){
 							alert("A");
